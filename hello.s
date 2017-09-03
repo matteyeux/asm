@@ -1,5 +1,5 @@
 section .data
-	text db "Hello World", 10
+	text db "Hello World", 10 ; 10 = '\n'
 	
 section .text
 	global _start 
@@ -10,7 +10,9 @@ _start:
 	mov 	rsi, text ;	buffer
 	mov 	rdx, 13 ; 	lenght of buf
 	syscall
+	jmp .exit
 
-	mov 	rax, 60
+.exit:
+	mov 	rax, 60 ; 	Number of exit syscall
 	mov		rdi, 0
 	syscall
